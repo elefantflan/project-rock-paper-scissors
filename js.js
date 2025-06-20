@@ -30,56 +30,6 @@
 
 //FUNCTION playRound (one round)
 //VARIABLE put value system on rock, paper, scissors
-function playRound (){
-
-    function getComputerChoice() {
-        let rock = "Rock";
-        let paper = "Paper";
-        let scissors = "Scissors";
-        let number = Math.floor(Math.random()*3);
-        if (number===0){
-            return rock;
-        } else if (number===1){
-            return paper;
-        } else if (number===2){
-            return scissors;
-        }
-    }
-
-    function getHumanChoice() {
-
-        let uans = prompt("Rock, Paper, or Scissors?");
-        
-        let a = uans.charAt(0).toUpperCase();
-        let b = uans.slice(1).toLowerCase();
-        let reform = a+b;
-        
-        return reform;
-    }
-
-    let computerChoice = getComputerChoice();
-    let humanChoice = getHumanChoice();
-    console.log("Computer: " + computerChoice);
-    console.log("User: " + humanChoice);
-    
-    if (computerChoice === "Rock" && humanChoice === "Paper") {
-        return("You Win!");
-    }
-    if (computerChoice === "Paper" && humanChoice ==="Scissors") {
-        return("You Win!");
-    }
-    if(computerChoice === "Scissors" && humanChoice === "Rock") {
-        return("You Win!")
-    }
-    else if (computerChoice === humanChoice) {
-        return("Tie!")
-    }
-    else {
-        return("You Lose!");
-    }
-}
-round = playRound();
-console.log(round);
 
 //SCORE
 let humanScore = 0;
@@ -93,6 +43,56 @@ let computerScore = 0;
 //make sure answer prompt shows up five times
 function playGame() {
     for (i=0;i<5;i++){ 
+        function playRound (){
+
+            function getComputerChoice() {
+                let rock = "Rock";
+                let paper = "Paper";
+                let scissors = "Scissors";
+                let number = Math.floor(Math.random()*3);
+                if (number===0){
+                    return rock;
+                } else if (number===1){
+                    return paper;
+                } else if (number===2){
+                    return scissors;
+                }
+            }
+        
+            function getHumanChoice() {
+        
+                let uans = prompt("Rock, Paper, or Scissors?");
+                
+                let a = uans.charAt(0).toUpperCase();
+                let b = uans.slice(1).toLowerCase();
+                let reform = a+b;
+                
+                return reform;
+            }
+        
+            let computerChoice = getComputerChoice();
+            let humanChoice = getHumanChoice();
+            console.log("Computer: " + computerChoice);
+            console.log("User: " + humanChoice);
+            
+            if (computerChoice === "Rock" && humanChoice === "Paper") {
+                return("You Win!");
+            }
+            if (computerChoice === "Paper" && humanChoice ==="Scissors") {
+                return("You Win!");
+            }
+            if(computerChoice === "Scissors" && humanChoice === "Rock") {
+                return("You Win!")
+            }
+            else if (computerChoice === humanChoice) {
+                return("Tie!")
+            }
+            else {
+                return("You Lose!");
+            }
+        }
+        round = playRound();
+        console.log(round);
     }
 }
 playGame();
