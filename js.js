@@ -31,6 +31,7 @@
 //FUNCTION playRound (one round)
 //VARIABLE put value system on rock, paper, scissors
 function playRound (){
+
     function getComputerChoice() {
         let rock = "Rock";
         let paper = "Paper";
@@ -55,11 +56,11 @@ function playRound (){
         
         return reform;
     }
+
     let computerChoice = getComputerChoice();
     let humanChoice = getHumanChoice();
     console.log("Computer: " + computerChoice);
     console.log("User: " + humanChoice);
-   
     
     if (computerChoice === "Rock" && humanChoice === "Paper") {
         return("You Win!");
@@ -77,8 +78,7 @@ function playRound (){
         return("You Lose!");
     }
 }
-
-let round = playRound();
+round = playRound();
 console.log(round);
 
 //SCORE
@@ -91,8 +91,8 @@ let computerScore = 0;
 //make it so that points add up each round
 //make game go on for five rounds
 //make sure answer prompt shows up five times
-function playGame(round) {
-    for (i=0;i<5;i++){
+function playGame() {
+    for (i=0;i<5;i++){ 
     }
 }
 playGame();
