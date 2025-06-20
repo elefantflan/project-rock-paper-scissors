@@ -12,19 +12,7 @@
 //RETURN value Math.floor(Math.random()*3) (x)
 //RETURN output that's either rock, paper, or scissors (x)
 
-function getComputerChoice() {
-    let rock = "Rock";
-    let paper = "Paper";
-    let scissors = "Scissors";
-    let number = Math.floor(Math.random()*3);
-    if (number===0){
-        return rock;
-    } else if (number===1){
-        return paper;
-    } else if (number===2){
-        return scissors;
-    }
-}
+
 //~User Choice~
 //PROMPT user choice 
 
@@ -32,22 +20,47 @@ function getComputerChoice() {
 //PARAMETER = uans VARIABLE with string value (x)
 //"Try Again" message for answers other than rock, paper, or scissors !== (x)
 //make answers CASE SENSITIVE so it works with any capitalization (x)
-function getHumanChoice() {
 
-    let uans = prompt("Rock, Paper, or Scissors?");
-    
-    let a = uans.charAt(0).toUpperCase();
-    let b = uans.slice(1).toLowerCase();
-    let reform = a+b;
-    
-    return reform;
-}
+//variable computerChoice, humanChoice
 
-let computerChoice = getComputerChoice();
-let humanChoice = getHumanChoice();
+
+
+//Computer: User:
+
+
 //FUNCTION playRound (one round)
 //VARIABLE put value system on rock, paper, scissors
 function playRound (){
+    function getComputerChoice() {
+        let rock = "Rock";
+        let paper = "Paper";
+        let scissors = "Scissors";
+        let number = Math.floor(Math.random()*3);
+        if (number===0){
+            return rock;
+        } else if (number===1){
+            return paper;
+        } else if (number===2){
+            return scissors;
+        }
+    }
+
+    function getHumanChoice() {
+
+        let uans = prompt("Rock, Paper, or Scissors?");
+        
+        let a = uans.charAt(0).toUpperCase();
+        let b = uans.slice(1).toLowerCase();
+        let reform = a+b;
+        
+        return reform;
+    }
+    let computerChoice = getComputerChoice();
+    let humanChoice = getHumanChoice();
+    console.log("Computer: " + computerChoice);
+    console.log("User: " + humanChoice);
+   
+    
     if (computerChoice === "Rock" && humanChoice === "Paper") {
         return("You Win!");
     }
@@ -66,9 +79,8 @@ function playRound (){
 }
 
 let round = playRound();
-console.log("Computer: " + computerChoice);
-console.log("User: " + humanChoice);
 console.log(round);
+
 //SCORE
 let humanScore = 0;
 let computerScore = 0;
@@ -79,7 +91,7 @@ let computerScore = 0;
 //make it so that points add up each round
 //make game go on for five rounds
 //make sure answer prompt shows up five times
-function playGame() {
+function playGame(round) {
     for (i=0;i<5;i++){
     }
 }
