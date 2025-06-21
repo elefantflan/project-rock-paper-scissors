@@ -21,26 +21,18 @@
 //"Try Again" message for answers other than rock, paper, or scissors !== (x)
 //make answers CASE SENSITIVE so it works with any capitalization (x)
 
-//variable computerChoice, humanChoice
-
-
-
-//Computer: User:
-
-
-//FUNCTION playRound (one round)
-//VARIABLE put value system on rock, paper, scissors
-
+//FUNCTION playRound (one round) (x)
+//CONDITIONAL value system on rock, paper, scissors(x)
 //SCORE
-let humanScore = 0;
-let computerScore = 0;
-
 //VARIABLE humanScore computerScore
 //add a point when human wins
 //add a point when computer wins
 //make it so that points add up each round
 //make game go on for five rounds
 //make sure answer prompt shows up five times
+let humanScore = 0;
+let computerScore = 0;
+
 function playGame() {
     for (i=0;i<5;i++){ 
         function playRound (){
@@ -69,30 +61,47 @@ function playGame() {
                 
                 return reform;
             }
-        
+            //VAR for functions getComputer,getHuman
             let computerChoice = getComputerChoice();
             let humanChoice = getHumanChoice();
+            //User:Choice Computer:Choice
             console.log("Computer: " + computerChoice);
             console.log("User: " + humanChoice);
             
             if (computerChoice === "Rock" && humanChoice === "Paper") {
+                humanScore += 1;
                 return("You Win!");
             }
             if (computerChoice === "Paper" && humanChoice ==="Scissors") {
+                humanScore += 1;
                 return("You Win!");
             }
             if(computerChoice === "Scissors" && humanChoice === "Rock") {
+                humanScore += 1;
                 return("You Win!")
             }
             else if (computerChoice === humanChoice) {
                 return("Tie!")
             }
             else {
+                computerScore += 1;
                 return("You Lose!");
             }
+            
         }
+        //VAR for function playRound
+        //LOG result
         round = playRound();
         console.log(round);
+        console.log("User: " + humanScore +" Computer: " + computerScore);
+
+    }
+    if (humanScore > computerScore) {
+        return "User is Champion!"
+    }
+    else {
+        return "Computer is Champion!" 
     }
 }
-playGame();
+rps = playGame();
+console.log(rps);
