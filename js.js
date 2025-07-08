@@ -1,42 +1,12 @@
-//~COMPONENTS~
-//step 1: create a simple return of computer's answer
-//step 2: create a prompt for the user to put their answer
-//step 3: create a result string for each round
-//step 4: create an output of Computer vs User score for each round
-//step 5: make sure game ends after five rounds, string printing final winner
-//and their score
 
-
-//FUNCTION getComputerChoice random choice of rock, paper, or scissors (x)
-//ASSIGN VARIABLE rock=0 paper=1 scissor=2 (x)
-//RETURN value Math.floor(Math.random()*3) (x)
-//RETURN output that's either rock, paper, or scissors (x)
-
-
-//~User Choice~
-//PROMPT user choice 
-
-//NEW FUNCTION getHumanChoice (x)
-//PARAMETER = uans VARIABLE with string value (x)
-//"Try Again" message for answers other than rock, paper, or scissors !== (x)
-//make answers CASE SENSITIVE so it works with any capitalization (x)
-
-//FUNCTION playRound (one round) (x)
-//CONDITIONAL value system on rock, paper, scissors(x)
-//SCORE
-//VARIABLE humanScore computerScore
-//add a point when human wins
-//add a point when computer wins
-//make it so that points add up each round
-//make game go on for five rounds
-//make sure answer prompt shows up five times
+//GLOBAL VAR score starts at 0
 let humanScore = 0;
 let computerScore = 0;
 
 function playGame() {
     for (i=0;i<5;i++){ 
         function playRound (){
-
+            //assign rock paper scissor to 0,1,2 respectively
             function getComputerChoice() {
                 let rock = "Rock";
                 let paper = "Paper";
@@ -52,19 +22,20 @@ function playGame() {
             }
         
             function getHumanChoice() {
-        
+                //user answer
                 let uans = prompt("Rock, Paper, or Scissors?");
                 
+                //reformat answer to first letter capital rest lower case
                 let a = uans.charAt(0).toUpperCase();
                 let b = uans.slice(1).toLowerCase();
                 let reform = a+b;
                 
                 return reform;
             }
-            //VAR for functions getComputer,getHuman
+            //GLOBAL VAR for functions getComputer,getHuman
             let computerChoice = getComputerChoice();
             let humanChoice = getHumanChoice();
-            //User:Choice Computer:Choice
+            //CHOICE RESULT
             console.log("Computer: " + computerChoice);
             console.log("User: " + humanChoice);
             
@@ -89,11 +60,11 @@ function playGame() {
             }
             
         }
-        //VAR for function playRound
-        //LOG result
-        round = playRound();
-        console.log(round);
-        console.log("User: " + humanScore +" Computer: " + computerScore);
+    //VAR for function playRound
+    //LOG result
+    round = playRound();
+    console.log(round);
+    console.log("User: " + humanScore +" Computer: " + computerScore);
 
     }
     if (humanScore > computerScore) {
@@ -105,3 +76,14 @@ function playGame() {
 }
 rps = playGame();
 console.log(rps);
+
+
+
+//UI
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
+rock.addEventListener(playRound);
+paper.addEventListener(playRound);
+scissors.addEventListener(playRound);
