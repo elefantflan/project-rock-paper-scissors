@@ -62,7 +62,21 @@ function getComputerChoice()
 
 function testing() 
     {
-        return "Hello World"
+        let r = rock.addEventListener("click", () =>
+            {
+                return "Rock";
+            }
+        )
+        let p = paper.addEventListener("click", ()=>
+            {
+                return "Paper";
+            }
+        )
+        let s = scissors.addEventListener("click", ()=>
+            {
+                return "Scissors";
+            }
+        )
     }
 
 //game
@@ -106,3 +120,5 @@ buttons.forEach((button)=>
 const test = document.createElement("div")
 container.appendChild(test);
 test.textContent = testing() + " " + getHumanChoice() + " " + getComputerChoice();
+console.log(getComputerChoice());
+console.log(getHumanChoice());
