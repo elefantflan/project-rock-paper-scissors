@@ -97,23 +97,19 @@ function playRound(human, computer) {
         (human === "Paper" && computer === "Rock") ||
         (human === "Scissors" && computer === "Paper")
     ) {
-        humanScore += 1;
+        return humanScore += 1;
     } else if (human === computer) {
         return "Tie!";
     } else {
-        computerScore += 1;
+        return computerScore += 1;
     }
 }
 
 //FUNCTION playGame: play five rounds
 function playGame() {
-    //five round loop
-    for (let i = 0; i < 5; i++) {
         let human = humanChoice();
         let computer = computerChoice();
         let result = playRound(human, computer);
-    }
-
     //score keep
     score.textContent = "You: " + humanScore + " Computer: " + computerScore;
 
@@ -130,7 +126,7 @@ function playGame() {
         {
             
         }
-        else 
+        else if (computerScore >= 0 === humanscore >=0)
         {
             final.textContent="It's a Draw!";
         }
