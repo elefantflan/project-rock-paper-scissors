@@ -1,5 +1,10 @@
 //UI RPS
 
+//VAR rock, paper, scissors
+let r = "Rock";
+let p = "Paper";
+let s = "Scissors";
+
 //SELECT button IDs from HTML
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
@@ -15,14 +20,12 @@ document.body.appendChild(content);
 //score
 let humanScore = 0;
 let computerScore = 0;
-const score = document.createElement("div");
-content.appendChild(score);
-const hS = document.createElement("p");
-const cS = document.createElement("p");
-score.appendChild(hS);
-score.appendChild(cS);
-hS.textContent = "Human: ";
-cS.textContent = "Computer: ";
+
+//VAR humanChoice computerChoice
+let hS = document.createElement("p");
+let cS = document.createElement("p");
+content.appendChild(hS);
+content.appendChild(cS);
 
 //FUNCTION ComputerChoice computer = result
 const computer = document.createElement("p");
@@ -30,17 +33,17 @@ content.appendChild(computer);
 
 function computerChoice () {
     let rangen = Math.floor(Math.random()*3);
-    let r = "Rock";
-    let p = "Paper";
-    let s = "Scissors";
     if (rangen === 0){
-        cS.textContent += r;
+        cS.textContent = "Rock";
+        const cRock = cS.textContent;
     }
     if (rangen === 1){
-        cS.textContent += p;
+        cS.textContent = "Paper";
+        const cPaper = cS.textContent;
     }
     if (rangen === 2){
-        cS.textContent += s;
+        cS.textContent = "Scissors";
+        const cScissors = cS.textContent;
     }
 }
 
@@ -53,22 +56,33 @@ content.appendChild(player);
 
 //FUNCTION humanChoice
 function humanChoice(){
+    
+    const hRock = rock.addEventListener ("click",() => {
+    hS.textContent = "Rock";
+    })
+
+    const hPaper = paper.addEventListener ("click", () => {
+    hS.textContent = "Paper"
+    })
+
+    const hScissors = scissors.addEventListener ("click", () => {
+    hS.textContent = "Scissors";
+    })
+
+    
 }
 
-rock.addEventListener ("click",() => {
-    hS.textContent += "Rock"
-    return computerChoice();
-})
+humanChoice();
 
-paper.addEventListener ("click", () => {
-    hS.textContent += "Paper"
-    return computerChoice();
-})
+//ROUND
+//ANSWERS user vs computer
+let user = document.createElement("p");
+let comp = document.createElement("p");
+content.appendChild(user, comp);
+//EQUALIZE H and C answers
+//IF H:rock/paper/scissors C:scissors/rock/paper, H win
+//TIE if equal value
 
-scissors.addEventListener ("click", () => {
-    hS.textContent += "Scissors"
-    return computerChoice();
-})
+//CALCULATE point every round 
 
-//FUNCTION playRound
-function playRound() {}
+//ANNOUNCE WINNER after ten rounds
