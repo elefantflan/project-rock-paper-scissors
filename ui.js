@@ -10,16 +10,12 @@ const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 
-//VAR content variable
+//CONST content
 const content = document.createElement("div");
 const title = document.createElement("h3");
 title.textContent = "RPS League";
 content.appendChild(title);
 document.body.appendChild(content);
-
-//score
-let humanScore = 0;
-let computerScore = 0;
 
 //VAR humanChoice computerChoice
 let hS = document.createElement("p");
@@ -27,26 +23,48 @@ let cS = document.createElement("p");
 content.appendChild(hS);
 content.appendChild(cS);
 
+//FUNCTION humanChoice
+function humanChoice(){
+    
+    rock.addEventListener ("click",() => {
+    hS.textContent = "Rock";
+    })
+
+    paper.addEventListener ("click", () => {
+    hS.textContent = "Paper"
+    })
+
+    scissors.addEventListener ("click", () => {
+    hS.textContent = "Scissors";
+    })
+}
+
 //FUNCTION ComputerChoice computer = result
 const computer = document.createElement("p");
 content.appendChild(computer);
 
 function computerChoice () {
-    let rangen = Math.floor(Math.random()*3);
-    if (rangen === 0){
-        cS.textContent = "Rock";
-        const cRock = cS.textContent;
-    }
-    if (rangen === 1){
-        cS.textContent = "Paper";
-        const cPaper = cS.textContent;
-    }
-    if (rangen === 2){
-        cS.textContent = "Scissors";
-        const cScissors = cS.textContent;
-    }
-}
 
+    //GAME START trigger user press button
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            let rangen = Math.floor(Math.random()*3);
+    
+            if (rangen === 0){
+                cS.textContent = "Rock";
+            }
+            if (rangen === 1){
+                cS.textContent = "Paper";
+            }
+            if (rangen === 2){
+                cS.textContent = "Scissors";
+            }
+        })
+        });
+    }
+   
+    
 
 //PLAYER
 const player = document.createElement("p");
@@ -54,35 +72,60 @@ content.appendChild(player);
 
 //when pressed create paragraph that says "Player chose [ANSWER]"
 
-//FUNCTION humanChoice
-function humanChoice(){
-    
-    const hRock = rock.addEventListener ("click",() => {
-    hS.textContent = "Rock";
-    })
 
-    const hPaper = paper.addEventListener ("click", () => {
-    hS.textContent = "Paper"
-    })
+//RESULT div container
+const results = document.createElement("div")
+content.appendChild(results);
+//SCORE paragraph
+const score = document.createElement("p");
+results.appendChild(score);
 
-    const hScissors = scissors.addEventListener ("click", () => {
-    hS.textContent = "Scissors";
-    })
+//LET score
+let humanScore=0;
+let computerScore=0;
 
+//FINAL paragraph
+const final = document.createElement("p");
+results.appendChild(final);
+
+//FUNCTION playRound()
+function playRound(human, computer) {
+
+    //compare result
+    if (
+        (human === "Rock" && computer === "Scissors") ||
+        (human === "Paper" && computer === "Rock") ||
+        (human === "Scissors" && computer === "Paper")
+    ) {
+        humanScore += 1;
+    } else if (human === computer) {
+        return "Tie!";
+    } else {
+        computerScore += 1;
+    }
+}
+
+//FUNCTION playGame: play five rounds
+function playGame() {
+    //five round loop
+    for (let i = 0; i < 5; i++) {
+        let human = humanChoice();
+        let computer = computerChoice();
+        let result = playRound(human, computer);
+    }
+
+    //score keep
+    score.textContent = "You: " + humanScore + " Computer: " + computerScore;
+
+    //scorekeeping
+    if (humanScore > computerScore) {
+        final.textContent="You Win!";
+    } else if (computerScore > humanScore) {
+        final.textContent="Computer Wins!";
+    } else {
+        final.textContent="It's a Draw!";
+    }
     
 }
 
-humanChoice();
-
-//ROUND
-//ANSWERS user vs computer
-let user = document.createElement("p");
-let comp = document.createElement("p");
-content.appendChild(user, comp);
-//EQUALIZE H and C answers
-//IF H:rock/paper/scissors C:scissors/rock/paper, H win
-//TIE if equal value
-
-//CALCULATE point every round 
-
-//ANNOUNCE WINNER after ten rounds
+playGame();

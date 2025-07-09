@@ -26,7 +26,7 @@ function getHumanChoice() {
     return reform;
 }
 
-function playRound(humanChoice, computerChoice) {
+function playRound(human, computer) {
     console.log("User: " + humanChoice);
     console.log("Computer: " + computerChoice);
 
@@ -50,8 +50,6 @@ function playGame() {
         let human = getHumanChoice();
         let computer = getComputerChoice();
         let result = playRound(human, computer);
-        console.log(result);
-        console.log("Score - User: " + humanScore + " | Computer: " + computerScore);
     }
 
     if (humanScore > computerScore) {
@@ -63,5 +61,4 @@ function playGame() {
     }
 }
 
-let finalResult = playGame();
-console.log(finalResult);
+
