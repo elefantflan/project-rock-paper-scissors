@@ -118,13 +118,22 @@ function playGame() {
     score.textContent = "You: " + humanScore + " Computer: " + computerScore;
 
     //scorekeeping
-    if (humanScore > computerScore) {
-        final.textContent="You Win!";
-    } else if (computerScore > humanScore) {
-        final.textContent="Computer Wins!";
-    } else {
-        final.textContent="It's a Draw!";
-    }
+    if (humanScore > computerScore) 
+        {
+            final.textContent="You Win!";
+        } 
+        else if (computerScore > humanScore) 
+        {
+            final.textContent="Computer Wins!";
+        } 
+        else if (computerScore===0 && humanScore==0)
+        {
+            
+        }
+        else 
+        {
+            final.textContent="It's a Draw!";
+        }
     
 }
 
