@@ -1,0 +1,59 @@
+*:before *:after{
+    box-sizing: border-box;
+}
+
+button{
+    box-sizing: border-box;
+    width:200px;
+    height:200px;
+    padding:0;
+    border:3px solid #cccccc;
+    background: none;
+}
+
+button:focus{
+    border: 3px solid red;
+}
+
+button:disabled{
+    background-color: #cccccc;
+}
+
+.page{
+    display: flex;
+    flex-direction: column;
+    flex:auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-display{
+    display:flex;
+    justify-content: space-between;
+    align-items:normal;
+    width:80%;
+    height:50px;
+    border:4px solid black;
+    margin-bottom: 20px;
+}
+
+.info-display>div{
+    border:1px solid black;
+    flex: auto;
+    text-align: center;
+}
+
+.computer-display{
+    position:relative;
+}
+
+.computer-choice{
+    position:absolute;
+    top:100px;
+    left:100px;
+}
+
+.user-display{
+    padding:0;
+    margin:0;
+}
