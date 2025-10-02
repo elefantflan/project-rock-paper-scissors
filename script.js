@@ -1,7 +1,4 @@
 const buttons = document.querySelectorAll('button');
-const rock = document.querySelector('.rock');
-const paper = document.querySelector('.paper');
-const scissors = document.querySelector('.scissors');
 
 const divComputer = document.querySelector('.computer');
 const divUser = document.querySelector('.user');
@@ -15,46 +12,46 @@ function computerChoice(){
     const paper = 2;
     const scissors = 3;
     if(randomNumber===rock){
-        return "rock";
+        divComputer.textContent="Rock"
     }
     else if(randomNumber===paper){
-        return "paper";
+        divComputer.textContent="Paper"
     }
     else if (randomNumber===scissors){
-        return "scissors";
+        divComputer.textContent="Scissors"
     }
 }
-
 
 function userChoice(){
-    const userRock = rock.addEventListener('click', ()=>{
-        return "rock"
-    });
-
-    const userPaper = paper.addEventListener('click', ()=>{
-        return "paper"
-    });
-
-    const userScissors = scissors.addEventListener('click', ()=>{
-        return "scissors"
-    });
-}
-
-function playGame(computer, user){
-    computer = computerChoice();
-    user = userChoice();
-    if (computer === user){
-        divResult.textContent="It's a tie";
-    }
-    else if(computer === "rock" && user === "paper" ||
-            computer === "paper" && user === "scissors"||
-            computer === "scissors" && user === "rock"){
-        divResult.textContent="You win!";
-    }
-}
-
-buttons.forEach((button)=>{
+    buttons.forEach(button => {
     button.addEventListener('click', ()=>{
-        return playGame();
+        computerChoice();
+        divUser.textContent=button.textContent
+        divResult.textContent=getResult();
     })
-})
+ })
+} 
+
+
+function getResult(){
+    let userChoice=divUser.textContent;
+    let computerChoice=divComputer.textContent;
+        // tie
+    if(userChoice===computerChoice){
+        return "Tie!"
+    }
+    // win
+    else if (userChoice==="Rock" && computerChoice ==="Scissors"||
+            userChoice==="Paper" && computerChoice ==="Rock"||
+            userChoice==="Scissors" && computerChoice === "Paper"){
+        return "User Wins"
+    }
+    // lose
+    else if (userChoice==="Rock" && computerChoice ==="Paper"||
+            userChoice==="Paper" && computerChoice ==="Scissors"||
+            userChoice==="Scissors" && computerChoice === "Rock"){
+        return "Computer Wins"
+    }
+}
+
+console.log(userChoice())
